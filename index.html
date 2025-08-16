@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeatherNow — Simple, Fast Weather</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">⛅</span>
+      <h1>WeatherNow</h1>
+    </div>
+
+    <div class="controls">
+      <div class="search-wrap">
+        <input id="searchInput" type="text" placeholder="Search city (e.g., Hyderabad)" autocomplete="off" />
+        <button id="searchBtn" title="Search">Search</button>
+        <button id="locBtn" title="Use my location">📍</button>
+        <div id="suggestions" class="suggestions hidden"></div>
+      </div>
+
+      <div class="toggles">
+        <label class="switch" title="Toggle °C/°F">
+          <input id="unitToggle" type="checkbox" />
+          <span class="slider"></span>
+          <span class="switch-label">°C / °F</span>
+        </label>
+
+        <label class="switch" title="Toggle theme">
+          <input id="themeToggle" type="checkbox" />
+          <span class="slider"></span>
+          <span class="switch-label">Light / Dark</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <h2>Recent</h2>
+      <ul id="recentList" class="recent"></ul>
+      <button id="clearRecent" class="link-btn">Clear</button>
+      <p class="hint">Tip: Use <b>📍</b> for your current location.</p>
+    </aside>
+
+    <section class="content">
+      <div id="status" class="status">Type a city and press Search.</div>
+
+      <section id="currentCard" class="card current hidden" aria-live="polite">
+        <div class="current-header">
+          <div>
+            <h2 id="placeName">—</h2>
+            <p id="dateTime">—</p>
+          </div>
+          <div class="current-temp">
+            <div class="big" id="tempNow">—</div>
+            <div class="feels">Feels like <span id="feelsLike">—</span></div>
+          </div>
+        </div>
+
+        <div class="current-body">
+          <div class="now-icon" id="nowIcon" aria-hidden="true">⛅</div>
+          <ul class="now-grid">
+            <li><span>Condition</span><b id="conditionText">—</b></li>
+            <li><span>Humidity</span><b id="humidity">—</b></li>
+            <li><span>Wind</span><b id="wind">—</b></li>
+            <li><span>Pressure</span><b id="pressure">—</b></li>
+            <li><span>Sunrise</span><b id="sunrise">—</b></li>
+            <li><span>Sunset</span><b id="sunset">—</b></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card hidden" id="hourlyCard">
+        <h3>Next 24h Temperature</h3>
+        <div id="hourlySpark" class="sparkline" role="img" aria-label="Hourly temperature trend"></div>
+      </section>
+
+      <section class="card hidden" id="forecastCard">
+        <h3>7-Day Forecast</h3>
+        <div id="forecastGrid" class="forecast-grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Data: Open-Meteo</span>
+    <span>Built with HTML • CSS • JS</span>
+  </footer>
+
+  <template id="forecastItemTpl">
+    <div class="forecast-item">
+      <div class="fi-date"></div>
+      <div class="fi-icon" aria-hidden="true">⛅</div>
+      <div class="fi-temp"></div>
+      <div class="fi-precip"></div>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
